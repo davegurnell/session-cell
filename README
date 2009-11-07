@@ -40,15 +40,32 @@ session-cell.ss:
 
 See the source code for more detail.
 
-===== Known issues =====
+===== Outstanding issues =====
 
-Currently, all session information is stored in a single global hash table called "all-sessions".
-Over time, this hash table will increase in size, theoretically ending in an out-of-memory errors.
+Test coverage:
 
-Untyped have been using this global hash table to store usernames for authenticated users
-for years and to our knowledge it has never caused a problem. Usernames are small so there's
-no reason we should ever have seen a crash, but it would be inadvisable to use this code to store
-large amounts of data in its current implementation.
+  Test coverage is not complete, particularly tests of the procedures in session-control.ss.
+  I haven't used this adaptation of the code in production so I expect there will still be bugs there.
 
-Jay has proposed an alternative implementation using md5-stuffers to store session data on-disk.
-I'll implement this as soon as I get a chance.
+Global hash table:
+
+  Currently, all session information is stored in a single global hash table called "all-sessions".
+  Over time, this hash table will increase in size, theoretically ending in an out-of-memory errors.
+
+  Untyped have been using this global hash table approach to store usernames for authenticated users
+  for years and to our knowledge it has never caused a problem. Usernames are small so there's
+  no reason we should ever have seen a crash, but it would be inadvisable to use this code to store
+  large amounts of data in its current implementation.
+
+  Jay has proposed an alternative implementation using md5-stuffers to store session data on-disk.
+  I'll implement this as soon as I get a chance.
+
+Netscape cookie implementation:
+
+  The code uses a version of collects/net/cookie-unit.ss that implements the old Netscape cookie spec,
+  rather than the more recent RFC standard implemented in core PLT. Untyped had issues getting cookies
+  to work on IE6 a few years ago, which caused us to fork this code.
+
+  I have tested the Untyped library on Firefox 2+, Safari 3+ and IE 6+ and found it to work okay.
+  However, I don't know for sure whether the core PLT library will perform better or worse in terms
+  of browser compatibility.
