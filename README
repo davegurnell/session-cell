@@ -2,6 +2,8 @@
 
 Licenced under LGPL. See COPYING and LICENCE for more information.
 
+Run "test-app.ss" for a demo.
+
 ===== Overview =====
 
 A "session" is a key/value store that is specific to a particular browser.
