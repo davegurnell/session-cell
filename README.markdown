@@ -28,7 +28,7 @@ Cookies are installed and removed with the procedures in session-control.ss. The
   - `adjust-session-lifetime` - make the session cookie last for a certain number of seconds;
   - `adjust-session-expiry` - make the session cookie last until a certain time;
 
-Once a cookie as been stored, a session can be retrieved and manipulated using procedures from session.ss:
+Once a cookie as been stored, a session can be retrieved and manipulated using procedures from `session.ss`:
 
 `session.ss`:
 
